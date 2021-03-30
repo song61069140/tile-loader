@@ -14,9 +14,9 @@ server:
       context-path: /tile-loader
 
 config:
-   downPoolSize: 3     #下载任务数量
+   downPoolSize: 10     #下载任务数量
    retryNum: 3         #同一个瓦片，下载失败后最大重试次数
-   tilePoolSize: 5     #后台下载瓦片线程数量，现在个人电脑配置50基本没压力
+   tilePoolSize: 200     #后台下载瓦片线程数量，现在个人电脑配置50基本没压力
    mongoStore: 0       #是否使用mongodb存储数据，(0:本地存储，1:mongo存储)，不使用mongo存储时，从@SpringBootApplication中去掉mongo的自动化配置
    openClient: 0       #是否开启客户端，(0:不开启，1:开启)，客户端是指jxbrowser客户端
    

@@ -110,6 +110,8 @@ public class MapServiceToolkit {
                 maxX = tile1.getX() > tile2.getX() ? tile1.getX() : tile2.getX();
                 maxY = tile1.getY() > tile2.getY() ? tile1.getY() : tile2.getY();
 
+                logger.info("minX=" + minX + ";minY=" + minY + ";maxX="+maxX + ";maxY=" + maxY);
+
                 for (int x = minX; x <= maxX; x++) {
                     sb.setLength(0);
                     if (!useMongoStore) {
@@ -169,6 +171,7 @@ public class MapServiceToolkit {
                     if (!storeService.exsits(downFile.getFileName(), downFile.getMapType())) {
                         byte[] content = executor.execute(Request.Get(downFile.getUrl()).connectTimeout(5000).socketTimeout(5000)).returnContent().asBytes();
                         storeService.store(downFile.getFileName(), downFile.getMapType(), content);
+                        logger.info("{}下载完成:{}", downFile.getFileName(), downFile.getUrl());
                     }
                 } catch (Exception e) {
                     logger.info("{}下载失败:{}", downFile.getFileName(), downFile.getUrl());
